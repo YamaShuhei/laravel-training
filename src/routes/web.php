@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+
 });
+
+//問い合わせ一覧
+Route::get('/contacts', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts.index');
+//問い合わせ新規投稿
+Route::get('/create', [App\Http\Controllers\ContactController::class, 'create'])->name('contacts.create');
+Route::post('/store', [App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
+
